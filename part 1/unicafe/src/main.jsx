@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [all, setAll] = useState(0)
+  const [average, setAverage] = useState(3)
+  const [positive, setPositive] = useState(0)
 
   const handleClick = param => {
     return function (e) {
@@ -22,6 +25,23 @@ const App = () => {
       }
     }
   }
+  const valores = {
+    good: 1,
+    neutral: 0,
+    bad: -1
+  }
+
+  useEffect(() => {
+    setAll(good + bad + neutral)
+    const sumValues = (valores.good * good) + (valores.neutral * neutral) + (valores.bad * bad)
+    if (all < 1) {
+      setAverage('At least two feedbacks')
+      setPositive('At least two feedbacks')
+    } else {
+      setAverage(sumValues / all)
+      setPositive((good / all) * 100 + '%')
+    }
+  }, [good, bad, neutral, average, all])
 
   return (
     <div>
@@ -33,6 +53,9 @@ const App = () => {
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
+      <p>all {all}</p>
+      <p>average {average}</p>
+      <p>positive {positive}</p>
 
     </div>
   )

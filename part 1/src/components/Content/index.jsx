@@ -1,15 +1,13 @@
 import { Part } from '../Part'
 
-export function Content ({ exercises, parts }) {
-  const arrayCombined = parts.map((part, i) => {
-    return [part, exercises[i]]
-  })
+export function Content ({ course }) {
+  const { parts } = course
 
   return (
     <>
       {
-        arrayCombined.map(item =>
-          <Part key={item} exercise={item[0]} part={item[1]} />
+        parts.map((part, index) =>
+          <Part key={part + index} name={part.name} exercises={part.exercises}></Part>
         )
       }
     </>

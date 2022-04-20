@@ -1,3 +1,5 @@
+import { Part } from '../Part'
+
 export function Content ({ exercises, parts }) {
   const arrayCombined = parts.map((part, i) => {
     return [part, exercises[i]]
@@ -7,7 +9,7 @@ export function Content ({ exercises, parts }) {
     <>
       {
         arrayCombined.map(item =>
-          <p key={item}>{item[0]} ------ {item[1]}</p>
+          <Part key={item} exercise={item[0]} part={item[1]} />
         )
       }
     </>

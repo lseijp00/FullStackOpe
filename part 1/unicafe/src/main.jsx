@@ -35,8 +35,9 @@ const App = () => {
   useEffect(() => {
     setAll(good + bad + neutral)
     const sumValues = (valores.good * good) + (valores.neutral * neutral) + (valores.bad * bad)
-    setAverage(sumValues / all)
-    setPositive((good / all) * 100 + '%')
+    setAverage(Math.round((sumValues / all) * 100) / 100)
+
+    setPositive((Math.round((good / all) * 100) / 100) * 100 + '%')
   }, [good, bad, neutral, average, all])
 
   return (
@@ -45,6 +46,8 @@ const App = () => {
       <button onClick={handleClick('good')}>good</button>
       <button onClick={handleClick('neutral')}>neutral</button>
       <button onClick={handleClick('bad')}>bad</button>
+      <h2>statistics</h2>
+
       {
       all
         ? (<Statistics good={good} bad={bad} neutral={neutral} all={all} average = {average} positive = {positive}/>)

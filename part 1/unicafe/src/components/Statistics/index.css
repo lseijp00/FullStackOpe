@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: rgba(190, 189, 189, 0.436);
+  border-radius: 50px;
+  box-shadow: 0px 0px 1em 0px rgba(0, 0, 0, 0.145);
+  padding: 1rem;
+}

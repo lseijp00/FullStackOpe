@@ -49,13 +49,8 @@ const App = () => {
   useEffect(() => {
     setAll(good + bad + neutral)
     const sumValues = (valores.good * good) + (valores.neutral * neutral) + (valores.bad * bad)
-    if (all < 1) {
-      setAverage('At least two feedbacks')
-      setPositive('At least two feedbacks')
-    } else {
-      setAverage(sumValues / all)
-      setPositive((good / all) * 100 + '%')
-    }
+    setAverage(sumValues / all)
+    setPositive((good / all) * 100 + '%')
   }, [good, bad, neutral, average, all])
 
   return (
@@ -64,7 +59,11 @@ const App = () => {
       <button onClick={handleClick('good')}>good</button>
       <button onClick={handleClick('neutral')}>neutral</button>
       <button onClick={handleClick('bad')}>bad</button>
-      <Statistics good={good} bad={bad} neutral={neutral} all={all} average = {average} positive = {positive}/>
+      {
+      all
+        ? (<Statistics good={good} bad={bad} neutral={neutral} all={all} average = {average} positive = {positive}/>)
+        : <p>No feedback given</p>
+      }
 
     </div>
   )

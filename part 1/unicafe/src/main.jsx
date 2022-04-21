@@ -1,20 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-
-const Statistics = (props) => {
-  return (
-    <div>
-      <h2>statistics</h2>
-      <p>good {props.good}</p>
-      <p>neutral {props.neutral}</p>
-      <p>bad {props.bad}</p>
-      <p>all {props.all}</p>
-      <p>average {props.average}</p>
-      <p>positive {props.positive}</p>
-    </div>
-
-  )
-}
+import { Statistics } from './components/Statistics/index'
 
 const App = () => {
   const [good, setGood] = useState(0)

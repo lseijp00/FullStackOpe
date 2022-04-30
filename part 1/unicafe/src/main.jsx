@@ -36,8 +36,7 @@ const App = () => {
     setAll(good + bad + neutral)
     const sumValues = (valores.good * good) + (valores.neutral * neutral) + (valores.bad * bad)
     setAverage(Math.round((sumValues / all) * 100) / 100)
-
-    setPositive((Math.round((good / all) * 100) / 100) * 100 + '%')
+    setPositive(((good / all) * 100).toFixed(2) + '%')
   }, [good, bad, neutral, average, all])
 
   return (

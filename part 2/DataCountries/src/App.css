@@ -9,3 +9,32 @@ svg, img {
   width: 100px;
   height: auto;
 }
+
+.wrapped-sections {
+  display: flex;
+  gap: 5rem;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  font-size: 13px;
+}
+
+.country {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.country__button {
+  font-size: 13px;
+  border: none;
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+
+.country__button:hover {
+  color: white;
+  background-color: rgb(60, 60, 60);
+}

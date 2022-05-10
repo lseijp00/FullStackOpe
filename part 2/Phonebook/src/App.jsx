@@ -11,7 +11,11 @@ const App = () => {
   const addContact = (e) => {
     e.preventDefault()
     const newContact = { name: newName }
-    setPersons([...persons, newContact])
+    const arrNames = persons.map((person) => person.name)
+    if (arrNames.includes(newContact.name))
+      alert(`${newName} already exists in array`)
+    else setPersons([...persons, newContact])
+
     setNewName('')
   }
   return (

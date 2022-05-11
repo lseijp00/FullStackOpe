@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
+import Weather from './Weather'
 
 function App() {
   const [newCountry, setNewCountry] = useState('')
@@ -27,10 +28,9 @@ function App() {
     setShowCountryDetails(country)
   }
 
-  console.log(countries)
   return (
     <div className='App'>
-      <div>
+      <div className='header'>
         <label>Find Countries</label>
         <input value={newCountry} type='text' onChange={handleChange} />
       </div>
@@ -55,11 +55,11 @@ function App() {
         </section>
         <section>
           {showCountry ? (
-            <div>
+            <div className='details'>
               <h3>{countryDetails.name.common}</h3>
-              <p>capital {countryDetails.capital}</p>
-              <p>area {countryDetails.area}</p>
-              <h5>languages:</h5>
+              <p>Capital {countryDetails.capital}</p>
+              <p>Area {countryDetails.area}</p>
+              <h5>Languages:</h5>
               <ul>
                 {Object.values(countryDetails.languages).map((language) => (
                   <li key={language}>{language}</li>
@@ -71,6 +71,7 @@ function App() {
             <p>No se han clicado detalles</p>
           )}
         </section>
+        <Weather showCountry={showCountry} country={countryDetails} />
       </div>
     </div>
   )

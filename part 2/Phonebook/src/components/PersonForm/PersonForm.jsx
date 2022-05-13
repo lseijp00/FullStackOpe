@@ -39,9 +39,9 @@ export default function PersonForm({ persons, setPersons }) {
       }}
       onSubmit={addContact}
     >
-      name <input value={newName} onChange={handleNameChange} />
-      number <input value={newNumber} onChange={handleNumberChange} />
-      <button type='submit'>add</button>
+      Name <input value={newName} onChange={handleNameChange} />
+      Number <input value={newNumber} onChange={handleNumberChange} />
+      <button type='submit'>Add</button>
     </form>
   )
 }

@@ -19,7 +19,7 @@ svg, img {
   display: flex;
   justify-content: space-evenly;
   gap: 5rem;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 3rem;
   font-size: 13px;
@@ -30,7 +30,7 @@ svg, img {
   flex-direction: column;
   text-align: center;
   align-items: center;
-  width: 500px;
+  width: 650px;
   min-height: 50vh;
   background-color: rgba(255, 0, 0, 0.196);
   padding: 1rem;

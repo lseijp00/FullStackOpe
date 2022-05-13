@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 
 export default function PersonForm({ persons, setPersons }) {
@@ -12,13 +13,18 @@ export default function PersonForm({ persons, setPersons }) {
     e.preventDefault()
     setNewNumber(e.target.value)
   }
+
   const addContact = (e) => {
     e.preventDefault()
     const newContact = { name: newName, number: newNumber }
     const arrNames = persons.map((person) => person.name)
+
     if (arrNames.includes(newContact.name))
       alert(`${newName} already exists in array`)
-    else setPersons([...persons, newContact])
+    else {
+      axios.post('http://localhost:3001/persons', newContact)
+      setPersons([...persons, newContact])
+    }
 
     setNewName('')
     setNewNumber('')

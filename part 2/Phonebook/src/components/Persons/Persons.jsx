@@ -18,8 +18,17 @@ export default function Persons({
         <div>No coincide nada</div>
       ) : personsFiltered.length > 0 && filter.length > 0 ? (
         personsFiltered.map((person, i) => (
-          <li key={i}>
-            {person.name} --- {person.number}
+          <li key={i} className='item__list'>
+            <div className='contact__item'>
+              <p>{person.name}</p>
+              <p> {person.number}</p>
+            </div>
+            <button
+              onClick={() => handleDelete(person.id)}
+              className='delete__item'
+            >
+              Delete
+            </button>
           </li>
         ))
       ) : (

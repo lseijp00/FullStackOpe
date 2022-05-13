@@ -20,9 +20,21 @@ export default function PersonForm({ persons, setPersons }) {
     const newContact = { name: newName, number: newNumber }
     const arrNames = persons.map((person) => person.name)
 
-    if (arrNames.includes(newContact.name))
-      alert(`${newName} already exists in array`)
-    else {
+    if (arrNames.includes(newContact.name)) {
+      const editableContact = persons.find(
+        (person) => person.name === newContact.name
+      )
+      service
+        .editContact(editableContact.id, newContact)
+        .then(
+          setPersons(
+            persons.map((person) =>
+              person.id !== editableContact.id ? person : newContact
+            )
+          )
+        )
+      console.log(persons)
+    } else {
       service.create(newContact)
       setPersons([...persons, newContact])
     }

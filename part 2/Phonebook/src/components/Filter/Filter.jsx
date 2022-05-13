@@ -1,3 +1,5 @@
+import './Filter.css'
+
 export default function Filter({ setFilter, setPersonsFiltered, persons }) {
   const handleFilter = (e) => {
     e.preventDefault()
@@ -8,7 +10,7 @@ export default function Filter({ setFilter, setPersonsFiltered, persons }) {
     setFilter(e.target.value)
   }
   return (
-    <div>
+    <div className='filter'>
       <p>Filter shown with a </p>
       <input onChange={handleFilter} />
     </div>

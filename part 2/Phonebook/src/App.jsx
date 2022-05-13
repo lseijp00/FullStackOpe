@@ -15,7 +15,7 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div className='App'>
       <h2>Phonebook</h2>
       <Filter
         persons={persons}
@@ -27,6 +27,7 @@ const App = () => {
       <h2>Numbers</h2>
       <Persons
         persons={persons}
+        setPersons={setPersons}
         filter={filter}
         personsFiltered={personsFiltered}
       />

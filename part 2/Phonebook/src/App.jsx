@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import './App.css'
 import Filter from './components/Filter/Filter'
 import PersonForm from './components/PersonForm/PersonForm'
 import Persons from './components/Persons/Persons'
+import service from './services/service'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -11,9 +11,7 @@ const App = () => {
   const [personsFiltered, setPersonsFiltered] = useState([])
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then((response) => setPersons(response.data))
+    service.getAll().then((response) => setPersons(response))
   }, [])
 
   return (

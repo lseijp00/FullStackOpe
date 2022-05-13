@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+import service from '../../services/service'
 
 export default function PersonForm({ persons, setPersons }) {
   const [newName, setNewName] = useState('')
@@ -22,7 +23,7 @@ export default function PersonForm({ persons, setPersons }) {
     if (arrNames.includes(newContact.name))
       alert(`${newName} already exists in array`)
     else {
-      axios.post('http://localhost:3001/persons', newContact)
+      service.create(newContact)
       setPersons([...persons, newContact])
     }
 

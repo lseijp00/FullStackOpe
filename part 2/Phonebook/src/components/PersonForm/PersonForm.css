@@ -1,0 +1,19 @@
+.PersonForm {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  position: relative;
+  text-align: center;
+}
+
+.success_message {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(131, 197, 131);
+}

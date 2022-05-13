@@ -1,10 +1,12 @@
 import axios from 'axios'
 import { useState } from 'react'
 import service from '../../services/service'
+import './PersonForm.css'
 
 export default function PersonForm({ persons, setPersons }) {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
   const handleNameChange = (e) => {
     e.preventDefault()
@@ -13,6 +15,12 @@ export default function PersonForm({ persons, setPersons }) {
   const handleNumberChange = (e) => {
     e.preventDefault()
     setNewNumber(e.target.value)
+  }
+  const showSuccess = () => {
+    setShowSuccessMessage(true)
+    setTimeout(() => {
+      setShowSuccessMessage(false)
+    }, 5000)
   }
 
   const addContact = (e) => {
@@ -33,10 +41,10 @@ export default function PersonForm({ persons, setPersons }) {
             )
           )
         )
-      console.log(persons)
+      showSuccess()
     } else {
-      service.create(newContact)
-      setPersons([...persons, newContact])
+      service.create(newContact).then(setPersons([...persons, newContact]))
+      showSuccess()
     }
 
     setNewName('')
@@ -44,17 +52,24 @@ export default function PersonForm({ persons, setPersons }) {
   }
 
   return (
-    <form
-      style={{
-        display: 'inline-flex',
-        gap: '.5rem',
-        flexDirection: 'column',
-      }}
-      onSubmit={addContact}
-    >
-      Name <input value={newName} onChange={handleNameChange} />
-      Number <input value={newNumber} onChange={handleNumberChange} />
-      <button type='submit'>Add</button>
-    </form>
+    <div className='PersonForm'>
+      <form
+        style={{
+          display: 'inline-flex',
+          gap: '.5rem',
+          flexDirection: 'column',
+        }}
+        onSubmit={addContact}
+      >
+        Name <input value={newName} onChange={handleNameChange} />
+        Number <input value={newNumber} onChange={handleNumberChange} />
+        <button type='submit'>Add</button>
+      </form>
+      <div>
+        {showSuccessMessage && (
+          <div className='success_message'>Success muy bien hecho</div>
+        )}
+      </div>
+    </div>
   )
 }

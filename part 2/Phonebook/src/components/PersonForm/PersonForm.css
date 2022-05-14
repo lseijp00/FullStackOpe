@@ -8,12 +8,21 @@
   text-align: center;
 }
 
-.success_message {
+.message {
   position: absolute;
-  top: 0;
   right: 0;
   padding: 1rem 2rem;
   border-radius: 5px;
   color: white;
-  background-color: rgb(131, 197, 131);
+}
+
+.success_message {
+  top: 0;
+  background-color: #4BB543;
+}
+
+.error_message {
+  bottom: 0;
+  background-color: #ff0033;
+
 }

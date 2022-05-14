@@ -11,9 +11,12 @@ const App = () => {
   const [personsFiltered, setPersonsFiltered] = useState([])
 
   useEffect(() => {
-    service.getAll().then((response) => setPersons(response))
+    service
+      .getAll()
+      .then((response) => setPersons(response))
+      .catch((e) => console.log(e))
   }, [])
-
+  console.log(persons)
   return (
     <div className='App'>
       <h2>Phonebook</h2>

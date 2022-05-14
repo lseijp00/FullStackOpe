@@ -5,13 +5,13 @@ export default function Persons({
   personsFiltered,
   filter,
   persons,
-  setPersons,
+  setPersons
 }) {
   const handleDelete = (id) => {
-    service.deleteContact(id)
-    setPersons(persons.filter((person) => person.id !== id))
+    service
+      .deleteContact(id)
+      .then(setPersons(persons.filter((person) => person.id !== id)))
   }
-
   return (
     <ul className='item__group'>
       {personsFiltered.length === 0 && filter.length > 0 ? (

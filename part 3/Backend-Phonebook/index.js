@@ -29,6 +29,13 @@ let persons = [
 app.get('/api/persons', (req, res) => {
   res.send(persons)
 })
+const date = new Date()
+app.get('/info', (req, res) => {
+  res.write(`Phonebook has info for ${persons.length} people`)
+  res.write(`${date}`)
+  res.end()
+
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

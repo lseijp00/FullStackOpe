@@ -33,6 +33,12 @@ app.get('/api/persons', (req, res) => {
 })
 app.get('/api/persons/:id', (req, res) => {
   const person = persons.filter(person => person.id === Number(req.params.id))
+
+  if (person.length === 0) {
+    return res.status(400).json({
+      error: 'content missing'
+    })
+  }
   res.send(person)
 })
 const date = new Date()

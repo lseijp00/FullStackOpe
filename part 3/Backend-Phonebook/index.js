@@ -50,9 +50,20 @@ app.delete('/api/persons/:id', (req, res) => {
 
 app.post('/api/persons', (req, res) => {
   const id = Math.floor(Math.random() * (99999 - 01))
-  const persona = { id, content: 'fulanito', number: '23123' }
-  persons = persons.concat(persona)
+
+  const persona = { id, content: '', number: '23123' }
+
+  const found = persons.find(person => person.content === persona.content)
+
+  if (found !== undefined) {
+    return res.status(404).json({ error: 'El nombre ya existe en la agenda' })
+  }
+  if (persona.content.length === 0 || persona.number.length === 0) {
+    return res.status(404).json({ error: 'Falta el nombre o número' })
+  }
+  persons = [...persons, persona]
   res.send(persons)
+
 })
 
 const date = new Date()

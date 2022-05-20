@@ -24,10 +24,16 @@ let persons = [
     number: "444444",
   },
 ]
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 app.get('/api/persons', (req, res) => {
   res.send(persons)
+})
+app.get('/api/persons/:id', (req, res) => {
+  const person = persons.filter(person => person.id === Number(req.params.id))
+  res.send(person)
 })
 const date = new Date()
 app.get('/info', (req, res) => {

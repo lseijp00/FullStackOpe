@@ -41,6 +41,13 @@ app.get('/api/persons/:id', (req, res) => {
   }
   res.send(person)
 })
+
+app.delete('/api/persons/:id', (req, res) => {
+  const id = Number(req.params.id)
+  persons = persons.filter(person => person.id !== id)
+  res.status(204).end()
+})
+
 const date = new Date()
 app.get('/info', (req, res) => {
   res.write(`Phonebook has info for ${persons.length} people`)
@@ -48,6 +55,7 @@ app.get('/info', (req, res) => {
   res.end()
 
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

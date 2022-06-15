@@ -1,6 +1,9 @@
 const express = require('express')
+const cors = require('cors')
+
+
 const app = express()
-const port = 3000
+const port = 3001
 
 let persons = [
   {
@@ -24,6 +27,9 @@ let persons = [
     number: "444444",
   },
 ]
+
+app.use(cors())
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })

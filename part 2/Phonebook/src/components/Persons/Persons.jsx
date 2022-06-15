@@ -35,7 +35,6 @@ export default function Persons({
         persons.map((person, i) => (
           <li key={i} className='item__list'>
             <div className='contact__item'>
-              <p>{person.name}</p>
               <p> {person.number}</p>
             </div>
             <button

@@ -8,6 +8,7 @@
 
 .item__list {
   display: flex;
+  margin: 0 auto;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -15,10 +16,8 @@
 
 .contact__item {
   display: flex;
-  justify-content: space-between;
   gap: 1rem;
-  width: 100%;
-  padding: .2rem .6rem;
+  padding: .2rem 1rem;
   border-radius: 5px;
   background-color: #09f;
 }
